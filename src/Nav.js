@@ -12,7 +12,7 @@ const Nav = () => {
                 <div className="nav">
                     <div className="logo">
                         <h1>
-                            Market Online Italy</h1>
+                            </h1>
                     </div>
                     <div className="search_box">
                         <button>Search</button>
