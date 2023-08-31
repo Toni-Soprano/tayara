@@ -2,10 +2,12 @@
     --bg-color: rgba(0, 140, 69, 0.9);
     --text-color: #F4F9FF;
     --button-color: #008C45;
-    --button-hover-color: #007d35;
+    --button-hover-color: rgba(255, 0, 0, 0.7)
+;
 }
 
 body {
+
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
@@ -36,6 +38,7 @@ body {
 }
 
 .nav .logo h1 {
+    background-image: url('/Users/Atef/Desktop/tayara/tayra/public/img/italy-flag.png');
     width: 110%;
     font-size: 1.5rem;
     font-weight: 800;
@@ -44,16 +47,12 @@ body {
     align-items: center;
     justify-content: space-between;
     cursor: pointer;
-}
-
-.nav .logo h1:hover {
-    background-image: url('/Users/Atef/Desktop/tayara/tayra/public/img/italy-flag.png'); /* Adjust the path as needed */
     background-size: cover;
-    background-repeat: repeat-y;
     background-clip: text;
-    -webkit-background-clip: text;
     color: transparent;
 }
+
+
 
 .nav .search_box {
     position: relative;
@@ -91,6 +90,7 @@ body {
 .nav .search_box button {
     background: var(--button-color);
     color: #ecf2f7;
+
 }
 
 .nav .add,
@@ -109,7 +109,17 @@ body {
 .nav .auth:hover {
     background-color: var(--button-hover-color);
 }
+.nav .auth .icon {
+    position: relative;
+    top: 4px;
+    right: 4px;
+    padding: 2px 0px;
+    font-size: 1.2rem;
+    font-weight: 100;
+
+}
 
 .btn {
     display: flex;
+    align-items: center;
 }

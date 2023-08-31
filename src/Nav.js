@@ -1,7 +1,11 @@
 import React from 'react';
 import './Nav.css';
+import {BiUserCircle} from 'react-icons/bi'
+
 
 const Nav = () => {
+
+
     return (
         <>
             <div className="info">
@@ -11,18 +15,19 @@ const Nav = () => {
             <header>
                 <div className="nav">
                     <div className="logo">
-                        <h1>
-                            </h1>
+                        <h1>Market Online Italy</h1>
                     </div>
                     <div className="search_box">
-                        <button>Search</button>
                         <input type="text" placeholder="Search here..." />
+                        <button>  Search</button>
                     </div>
                     <div>
                         <button className="add">Publier une annonce</button>
                     </div>
                     <div>
-                        <button className="auth">Se connecter</button>
+                        <button className="auth"  >
+                          <i className="icon"><BiUserCircle/></i>Se connecter
+                        </button>
                     </div>
                 </div>
             </header>
