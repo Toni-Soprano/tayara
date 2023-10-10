@@ -1,0 +1,123 @@
+*{
+
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    box-sizing: border-box;
+}
+:root {
+    --bg-color: rgba(1, 49, 22, 0.88);
+    --text-color: #F4F9FF;
+    --button-color: #01381a;
+    --button-hover-color: rgba(255, 0, 0, 0.7)
+;
+}
+/*categories*/
+.categories {
+    display: flex;
+    background: linear-gradient(to top, var(--bg-color) 5%, #006b34 100%);
+    border-bottom: 1px solid;
+
+}
+.categories ul {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.categories ul li {
+    font-size: 1.1rem;
+    color: var(--text-color);
+    list-style: none;
+    margin: 20px 40px;
+    cursor: pointer;
+}
+.categories ul li:hover{
+    color: var(--button-hover-color);
+}
+                /*Banner*/
+.top_banner {
+    width: 90%;
+    margin-left: 6%;
+    margin-top: 1%;
+}
+.top_banner .container .detail {
+    margin: 5px 80px;
+    padding: 5px 8px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background: linear-gradient(to top, var(--bg-color) 5%, #006b34 100%);
+}
+.top_banner .container .detail h2 {
+    font-size: 1rem;
+    margin-left: 50px;
+}
+.top_banner .container .detail .link {
+    font-size: 1.1rem;
+    padding: 16px;
+    margin: 18px;
+    background-color: var(--button-color);
+    text-decoration: none;
+    color: var(--text-color);
+    border: none;
+    border-radius: 20px;
+}
+.top_banner .container .detail .link:hover {
+    background-color: var(--button-hover-color);
+}
+.News  {
+    width: 100%;
+    background: linear-gradient(to top, var(--bg-color) 5%, #006b34 100%);
+
+}
+.News .container {
+    margin: 16px;
+    padding: 16px;
+}
+/* News section */
+.News {
+    background-color: white; /* White background color */
+    padding: 20px;
+    border-bottom: 2px solid green; /* Green border at the bottom */
+}
+
+.News .container {
+    text-align: center;
+}
+
+.News h1 {
+    font-size: 1.8rem;
+    color: var(--text-color);
+    margin-bottom: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
