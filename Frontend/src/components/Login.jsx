@@ -1,25 +1,48 @@
 import React, { useState } from 'react'
-
 import axios from 'axios'
-import('../Styles/Login.css')
 
 const Login = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const emailError = document.querySelector('.email.error')
-    const passwordError = document.querySelector('.password.error')
+    const [emailError, setEmailError] = useState('')
+    const [passwordError, setPasswordError] = useState('')
+    const [loginError, setLoginError] = useState('')
 
     const handleSubmit = async e => {
         e.preventDefault()
 
+        // Reset errors
+        setEmailError('')
+        setPasswordError('')
+        setLoginError('')
+
         try {
-            const response = await axios.post('/login', { email, password })
+            const response = await axios.post('http://localhost:3001/login', {
+                email,
+                password,
+            })
             // Handle the response from the server
             console.log(response.data)
-            // Redirect or set authentication state in your app
+
+            if (response.data.user) {
+                // Redirect or set authentication state in your app
+                console.log('Login successful')
+            }
         } catch (error) {
-            // Handle errors
-            console.error(error)
+            if (error.response) {
+                // Server responded with an error status (4xx or 5xx)
+                const { data } = error.response
+
+                if (data.errors) {
+                    setEmailError(data.errors.email || '')
+                    setPasswordError(data.errors.password || '')
+                } else if (data.error) {
+                    setLoginError(data.error)
+                }
+            } else {
+                // An error occurred in making the request (e.g., network error)
+                console.error('Network error:', error.message)
+            }
         }
     }
 
@@ -43,6 +66,7 @@ const Login = () => {
                     onChange={e => setPassword(e.target.value)}
                 />
                 <div className="password error">{passwordError}</div>
+                <div className="login error">{loginError}</div>
                 <button type="submit">Login</button>
             </form>
         </div>

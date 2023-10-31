@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
-import('../Styles/Login.css')
+import axios from 'axios'
+
 const Signup = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [emailError, setEmailError] = useState('')
     const [passwordError, setPasswordError] = useState('')
+    const [signupError, setSignupError] = useState('')
 
     const handleSubmit = async e => {
         e.preventDefault()
@@ -12,28 +14,37 @@ const Signup = () => {
         // Reset errors
         setEmailError('')
         setPasswordError('')
+        setSignupError('')
 
         try {
-            const res = await fetch('/signup', {
-                method: 'POST',
-                body: JSON.stringify({ email, password }),
-                headers: { 'Content-Type': 'application/json' },
+            const response = await axios.post('http://localhost:3001/signup', {
+                email,
+                password,
             })
-            const data = await res.json()
-            console.log(data)
 
-            if (data.errors) {
-                setEmailError(data.errors.email)
-                setPasswordError(data.errors.password)
-            }
+            // Handle the response from the server
+            console.log(response.data)
 
-            if (data.user) {
-                // Redirect or handle success
-                // You can use React Router for navigation
-                // Example: history.push('/'); // assuming you have access to the history object
+            if (response.data.user) {
+                // Redirect or set authentication state in your app
+                console.log('Sign-up successful')
             }
-        } catch (err) {
-            console.log(err)
+        } catch (error) {
+            if (error.response) {
+                // Server responded with an error status (4xx or 5xx)
+                const { data } = error.response
+
+                if (data.errors) {
+                    setEmailError(data.errors.email || '')
+                    setPasswordError(data.errors.password || '')
+                } else if (data.error) {
+                    // Display the server's specific error message
+                    setSignupError(data.error)
+                }
+            } else {
+                // An error occurred in making the request (e.g., network error)
+                console.error('Network error:', error.message)
+            }
         }
     }
 
@@ -59,6 +70,7 @@ const Signup = () => {
                     required
                 />
                 <div className="password error">{passwordError}</div>
+                <div className="signup error">{signupError}</div>
                 <button type="submit">Sign up</button>
             </form>
         </div>
