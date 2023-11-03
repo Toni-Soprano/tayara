@@ -1,8 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { logo, cart, pdp } from '../assests/index'
 import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
 const Header = () => {
+    const productData = useSelector(state => state.market.productData)
+
+    console.log(productData)
     return (
         <div className="w-full h-20  bg-white border-b-[1px] border-b-gray-500 sticky top-0 z-50">
             <div className="max-w-screen-xl h-full mx-auto flex items-center justify-between">
@@ -49,8 +53,18 @@ const Header = () => {
                             Contact
                         </li>
                     </ul>
+
                     <div className="relative">
-                        <img className="w-6" src={cart} alt="cart" />
+                        <Link to="/cart">
+                            <img
+                                className="w-10 cursor-pointer"
+                                src={cart}
+                                alt="cart"
+                            />
+                            <span className="absolute top-3 left-4">
+                                {productData.length}
+                            </span>
+                        </Link>
                     </div>
                     <img
                         className=" w-12 h-15 rounded-full cursor-pointer  "
